@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
     <Footer />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
 import Footer from './components/Footer.vue';
 
 export default Vue.extend({
   name: 'App',
   components: {
-    HelloWorld,
     Footer
   }
 });
