@@ -1,0 +1,22 @@
+{
+  "name": "plusstudio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuismadelValle/EstudioCasaLily.git"
+  },
+  "author": "Luisma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuismadelValle/EstudioCasaLily/issues"
+  },
+  "homepage": "https://github.com/LuismadelValle/EstudioCasaLily#readme",
+  "devDependencies": {
+    "vue": "^3.2.39"
+  }
+}
