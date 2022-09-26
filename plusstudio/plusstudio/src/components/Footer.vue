@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-bottom fluid-container footer flex">
+  <div class="fluid-container footer flex">
     <div class="row">
       <p>Contáctenos en nuestras redes sociales</p>
     </div>
@@ -84,5 +84,8 @@ export default {
   p {
     margin: auto;
     text-align: center;
+  }
+  .footer {
+    display: block;
   }
 </style>
