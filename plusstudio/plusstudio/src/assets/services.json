@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "Nombre": "Fotos de Quince",
+    "Imagenes": 50,
+    "PrecioBase": 100,
+    "PrecioMn": 0,
+    "PrecioEuros": 0,
+    "PrecioMLC": 0
+  },
+  {
+    "id": 2,
+    "Nombre": "Fotos para bebes",
+    "Imagenes": 50,
+    "PrecioBase": 80,
+    "PrecioMn": 0,
+    "PrecioEuros": 0,
+    "PrecioMLC": 0
+  },
+  {
+    "id": 3,
+    "Nombre": "Fotos de embarazadas",
+    "Imagenes": 50,
+    "PrecioBase": 140,
+    "PrecioMn": 0,
+    "PrecioEuros": 0,
+    "PrecioMLC": 0
+  },
+  {
+    "id": 4,
+    "Nombre": "Fotos de Quince",
+    "Imagenes": "Variable",
+    "PrecioBase": 2,
+    "PrecioMn": 0,
+    "PrecioEuros": 0,
+    "PrecioMLC": 0
+  }
+]
