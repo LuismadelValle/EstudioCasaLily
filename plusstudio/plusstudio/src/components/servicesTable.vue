@@ -16,7 +16,7 @@
           <b-form-select id="currencyDropdown" v-model="selectedCurrency" :options="currencySelect" class="w-100"></b-form-select>
         </b-col>
         <b-col sm="2">
-          <label for="input-small">Ingresar tasa de cambio:</label>
+          <label for="input-small">Ingresar tasa de cambio**:</label>
         </b-col>
         <b-col sm="2">
           <b-form-input id="input-small" size="sm" placeholder="Actualizar precios" v-model="changeRate"></b-form-input>
@@ -45,7 +45,7 @@ export default {
       ],
       selectedCurrency: null
     }
-  }, 
+  },
   methods: {
     updatePrices() {
       const currency = this.selectedCurrency;

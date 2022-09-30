@@ -1,7 +1,7 @@
 <template>
   <div>
     <h5>En fechas especiales se podrá recibir descuentos.Nuestro próximo descuento será:</h5>
-    <p id="discountsText">{{ message }}</p>
+    <p>{{ message }}</p>
     <b-img :src="src" alt="Plustudio logo" id="logo"></b-img>
   </div>
 </template>
@@ -17,19 +17,23 @@ export default {
       message: null,
       src: logo
     }
-  }, 
-  mounted() {
-    if (this.discounts == '') {
+  },
+  computed: {
+    displayMessage() {
+      if (this.discounts.length === 0) {
         this.message = 'Próximamente'
-    } else {
-        return
+      } else if(this.discounts.length === 1) {
+        this.message = 'El ' + this.discounts[0].name + ' (' + this.discounts[0].date + ')'
+      } else {
+        throw new Error('Can\'t add more than 1 date at a time')
       }
+    }
   }
 }
 </script>
 
 <style>
-  #discountsText {
+#discountsText {
     font-style: italic;
   }
   #logo {
@@ -38,4 +42,12 @@ export default {
     height: 10%;
     width: 10%;
   }
+  #discountsTable {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 75%;
+    color: #fff;
+    font-family: great, calibri;
+  }
+  
 </style>
