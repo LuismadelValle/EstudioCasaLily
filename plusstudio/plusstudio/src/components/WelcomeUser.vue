@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import userTestData from '@/assets/userTestData.json';
 
 export default {
