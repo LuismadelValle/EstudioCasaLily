@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "cardTitle": "Quinces de Jane Doe",
+    "serviceType": "Sesión fotográfica en estudio",
+    "year": 2019,
+    "month": "Julio",
+    "fullDate": "2019/07/12",
+    "image": null
+  },
+  {
+    "id": 2,
+    "cardTitle": "Fotos de Baby Doe",
+    "serviceType": "Sesión fotográfica en estudio y exterior",
+    "year": 2020,
+    "month": "Ago",
+    "fullDate": "2020/08/30",
+    "image": null
+  },
+  {
+    "id": 3,
+    "cardTitle": "Videos de John Doe",
+    "serviceType": "Videos personales",
+    "year": 2021,
+    "month": "Enero",
+    "fullDate": "2021/01/03",
+    "image": null
+  },
+  {
+    "id": 4,
+    "cardTitle": "Publicidad para ArtDoe",
+    "serviceType": "Videos publicitarios",
+    "year": 2022,
+    "month": "Junio",
+    "fullDate": "2022/06/12",
+    "image": null
+  },
+  {
+    "id": 5,
+    "cardTitle": "Fotos de Jacinta",
+    "serviceType": "Restauración de fotos antiguas",
+    "year": 2019,
+    "month": "Diciembre",
+    "fullDate": "2019/12/12",
+    "image": null
+  },
+  {
+    "id": 6,
+    "cardTitle": "Bodas de Juan y Juliana",
+    "serviceType": "Edición de fotos y videos",
+    "year": 2020,
+    "month": "Octubre",
+    "fullDate": "2020/10/15",
+    "image": null
+  }
+]
