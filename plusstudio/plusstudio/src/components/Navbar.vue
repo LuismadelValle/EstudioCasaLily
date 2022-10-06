@@ -69,6 +69,12 @@
   .ml-4 {
     margin-left: 5px;
   }
+  .dropdown-item, .dropdown-menu {
+    background-color: black !important;
+  }
+  .dropdown-item:hover {
+    background-color: #4D4D58 !important;
+  }
   @media only screen and (max-width: 768px) {
     .navbar {
       flex-direction: row;
