@@ -1,20 +1,31 @@
 <template>
   <div>
     <b-row>
-      <h5>Filtrar por:</h5>
+      <b-col cols-sm="2" class="ml-2 my-2">
+        <b-button v-b-modal.modal-center>Filtrar por: </b-button>
+      </b-col>
+      <b-col cols="10"></b-col>
+      <b-modal id="modal-center" centered>
+        <b-container fluid>
+          <b-col>
+            <b-dropdown id="dropdown-1" text="Años" class="m-md-2">
+              <b-dropdown-item id="dropdownYears" v-for="year in years">{{
+                year.year
+                }}</b-dropdown-item>
+            </b-dropdown>
+          </b-col>
+        </b-container>
+        <b-container fluid>
+          <b-col>
+            <b-dropdown id="dropdown-2" text="Meses" class="m-md-2">
+              <b-dropdown-item id="dropdownMonths" v-for="month in months">
+                {{ month.month }}</b-dropdown-item>
+            </b-dropdown>
+          </b-col>
+        </b-container>
+      </b-modal>
     </b-row>
     <b-row>
-      <b-col>
-        <b-dropdown id="dropdown-1" text="Años" class="m-md-2">
-          <b-dropdown-item id="dropdownYears" v-for="year in years">{{
-          year.year
-          }}</b-dropdown-item>
-        </b-dropdown>
-        <b-dropdown id="dropdown-2" text="Meses" class="m-md-2">
-          <b-dropdown-item id="dropdownMonths" v-for="month in months">
-            {{ month.month }}</b-dropdown-item>
-        </b-dropdown>
-      </b-col>
       <b-col sm="3" id="catalogCard" v-for="card in cards" :key="cards.id" :per-page="perPage" :current-page="paginationDetail">
         <b-card
           img-src="https://picsum.photos/600/300/?image=25"
