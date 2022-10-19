@@ -4,30 +4,55 @@
       <b-col cols-sm="2" class="ml-2 my-2">
         <b-button v-b-modal.modal-center>Filtrar por: </b-button>
       </b-col>
-      <b-col cols="10"></b-col>
+      <b-col cols="10">
+        <div v-if="filtersApplied.length > 0">
+          <b-row>
+            <b-col cols="2">
+              <p>Filtros aplicados: </p>
+            </b-col>
+            <b-col cols="1">
+              <p>Año: {{ filtersApplied[0] }}</p>
+            </b-col>
+            <b-col cols="1">
+              <p>Mes: {{ filtersApplied[1] }}</p>
+            </b-col>
+            <b-col cols="1"></b-col>
+            <b-col cols="5">
+              <b-button id="resetFiltersButton" @click="clearFilters">Resetear</b-button>
+            </b-col>
+          </b-row>
+        </div>
+      </b-col>
+    </b-row>
+    <b-container>
       <b-modal id="modal-center" centered body-bg-variant="light" hide-header hide-footer>
         <div>
-          <b-button id="closeModalButton" class="mr-right" variant="danger" @click="$bvModal.hide('modal-center')">X</b-button>
+          <b-button id="closeModalButton" class="mr-right" variant="danger" @click="$bvModal.hide('modal-center')">X
+          </b-button>
         </div>
         <b-row>
           <p>Parámetros de busqueda</p>
-          <b-form-select v-model="selectYear">
-            <b-form-select-option :value="null">Seleccione un año</b-form-select-option>
-            <b-form-select-option v-for="year in years" :value="year">{{ year.year }}</b-form-select-option>
-          </b-form-select>
-          <b-form-select v-model="selectMonth">
-            <b-form-select-option :value2="null">Seleccione un mes</b-form-select-option>
-            <b-form-select-option v-for="month in months" :value2="month">{{ month.month }}</b-form-select-option>
-          </b-form-select>
+          <b-col>
+            <b-form-select v-model="selectYear">
+              <b-form-select-option :value="null">Seleccione un año</b-form-select-option>
+              <b-form-select-option v-for="year in years" :value="year">{{ year.year }}</b-form-select-option>
+            </b-form-select>
+          </b-col>
+           <b-col>
+            <b-form-select v-model="selectMonth">
+              <b-form-select-option :value="null">Seleccione un mes</b-form-select-option>
+              <b-form-select-option v-for="month in months" :value="month">{{ month.month }}</b-form-select-option>
+            </b-form-select>
+          </b-col>
         </b-row>
         <b-row>
           <b-button-group>
-            <b-button>Aceptar</b-button>
-            <b-button variant="danger">Cancelar</b-button>
+            <b-button @click="$bvModal.hide('modal-center'); filtersSelected()">Aceptar</b-button>
+            <b-button variant="danger" @click="$bvModal.hide('modal-center'); resetData();">Cancelar</b-button>
           </b-button-group>
         </b-row>
       </b-modal>
-    </b-row>
+    </b-container>
     <b-row>
       <b-col sm="3" id="catalogCard" v-for="card in cards" :key="cards.id" :per-page="perPage" :current-page="paginationDetail">
         <b-card
@@ -75,7 +100,8 @@ export default {
       years: [],
       months: [],
       selectYear: null,
-      selectMonth: null
+      selectMonth: null,
+      filtersApplied: []
     };
   },
   created() {
@@ -87,6 +113,18 @@ export default {
   computed: {
     rows() {
       return this.cards.length
+    }
+  }, methods: {
+    resetData() {
+      this.selectYear = null
+      this.selectMonth = null
+    },
+    filtersSelected() {
+      this.filtersApplied.push(this.selectYear.year)
+      this.filtersApplied.push(this.selectMonth.month)
+    },
+    clearFilters() {
+      this.filtersApplied = []
     }
   }
 };
@@ -110,7 +148,12 @@ h5 {
   background-color: #4d4d58;
 }
 #closeModalButton {
-  border-radius: 10px;
+  border-radius: 5px;
+  margin-right: 5px !important;
+  height: 20px;
+  width: 20px;
+  font-size: 10px !important;
+  text-align: center !important;
 
 }
 .dropdown-item,
