@@ -5,24 +5,27 @@
         <b-button v-b-modal.modal-center>Filtrar por: </b-button>
       </b-col>
       <b-col cols="10"></b-col>
-      <b-modal id="modal-center" centered>
-        <b-container fluid>
-          <b-col>
-            <b-dropdown id="dropdown-1" text="Años" class="m-md-2">
-              <b-dropdown-item id="dropdownYears" v-for="year in years">{{
-                year.year
-                }}</b-dropdown-item>
-            </b-dropdown>
-          </b-col>
-        </b-container>
-        <b-container fluid>
-          <b-col>
-            <b-dropdown id="dropdown-2" text="Meses" class="m-md-2">
-              <b-dropdown-item id="dropdownMonths" v-for="month in months">
-                {{ month.month }}</b-dropdown-item>
-            </b-dropdown>
-          </b-col>
-        </b-container>
+      <b-modal id="modal-center" centered body-bg-variant="light" hide-header hide-footer>
+        <div>
+          <b-button id="closeModalButton" class="mr-right" variant="danger" @click="$bvModal.hide('modal-center')">X</b-button>
+        </div>
+        <b-row>
+          <p>Parámetros de busqueda</p>
+          <b-form-select v-model="selectYear">
+            <b-form-select-option :value="null">Seleccione un año</b-form-select-option>
+            <b-form-select-option v-for="year in years" :value="year">{{ year.year }}</b-form-select-option>
+          </b-form-select>
+          <b-form-select v-model="selectMonth">
+            <b-form-select-option :value2="null">Seleccione un mes</b-form-select-option>
+            <b-form-select-option v-for="month in months" :value2="month">{{ month.month }}</b-form-select-option>
+          </b-form-select>
+        </b-row>
+        <b-row>
+          <b-button-group>
+            <b-button>Aceptar</b-button>
+            <b-button variant="danger">Cancelar</b-button>
+          </b-button-group>
+        </b-row>
       </b-modal>
     </b-row>
     <b-row>
@@ -71,6 +74,8 @@ export default {
       paginationDetail: 1,
       years: [],
       months: [],
+      selectYear: null,
+      selectMonth: null
     };
   },
   created() {
@@ -103,6 +108,10 @@ h5 {
 #dropdownYears:hover,
 #dropdownMonths:hover {
   background-color: #4d4d58;
+}
+#closeModalButton {
+  border-radius: 10px;
+
 }
 .dropdown-item,
 .dropdown-menu {
