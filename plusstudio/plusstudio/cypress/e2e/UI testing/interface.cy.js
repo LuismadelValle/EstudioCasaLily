@@ -18,6 +18,8 @@ describe('Accessing main interface', () => {
       cy.get('.dropdown-toggle').click()
 
       cy.get('li[role="presentation"]').its('length').should('be.gte', 1)
+
+      cy.log('just to update to jira')
     })
   })
 })
