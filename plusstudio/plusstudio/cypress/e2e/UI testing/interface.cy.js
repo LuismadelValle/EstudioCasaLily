@@ -19,7 +19,7 @@ describe('Accessing main interface', () => {
 
       cy.get('li[role="presentation"]').its('length').should('be.gte', 1)
 
-      cy.log('just to update to jira')
+      cy.log('just to update to jira 2')
     })
   })
 })
