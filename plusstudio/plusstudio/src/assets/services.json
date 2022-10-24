@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "Nombre": "Fotos de Quince",
+    "Nombre": "Sesión fotográfica en estudio y en exterior",
     "Imagenes": 50,
     "PrecioBase": 100,
     "PrecioMn": 0,
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "Nombre": "Fotos para bebes",
+    "Nombre": "Videos personales y publicitarios",
     "Imagenes": 50,
     "PrecioBase": 80,
     "PrecioMn": 0,
@@ -19,7 +19,7 @@
   },
   {
     "id": 3,
-    "Nombre": "Fotos de embarazadas",
+    "Nombre": "Restauración de fotos antiguas",
     "Imagenes": 50,
     "PrecioBase": 140,
     "PrecioMn": 0,
@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "Nombre": "Fotos de Quince",
+    "Nombre": "Edición de videos y fotos *",
     "Imagenes": "Variable",
     "PrecioBase": 2,
     "PrecioMn": 0,
