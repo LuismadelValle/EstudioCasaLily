@@ -73,7 +73,7 @@
         </b-card>
       </b-col>
     </b-row>
-    <b-row>
+    <!-- <b-row>
       <b-pagination
         v-model="paginationDetail" 
         :total-rows="rows"
@@ -82,7 +82,7 @@
         align="right"
         size="sm"
       ></b-pagination>
-    </b-row>
+    </b-row> -->
   </div>
 </template>
 
