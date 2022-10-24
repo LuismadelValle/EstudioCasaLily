@@ -1,0 +1,74 @@
+[
+  {"years": [
+      {
+        "id": 1,
+        "year": 2019
+      },
+      {
+        "id": 2,
+        "year": 2020
+      }, 
+      {
+        "id": 3,
+        "year": 2021
+      },
+      {
+        "id": 4,
+        "year": 2022
+      }
+    ]
+  }, 
+  {
+    "months": [
+      {
+        "key": 1,
+        "month": "Ene"
+      },
+      {
+        "key": 2,
+        "month": "Feb"
+      }, 
+      {
+        "key": 3,
+        "month": "Mar"
+      },
+      {
+        "key": 4,
+        "month": "Abr"
+      },
+      {
+        "key": 5,
+        "month": "May"
+      },
+      {
+        "key": 6,
+        "month": "Jun"
+      }, 
+      {
+        "key": 7,
+        "month": "Jul"
+      },
+      {
+        "key": 8,
+        "month": "Ago"
+      },
+      {
+        "key": 9,
+        "month": "Sep"
+      },
+      {
+        "key": 10,
+        "month": "Oct"
+      }, 
+      {
+        "key": 11,
+        "month": "Nov"
+      },
+      {
+        "key": 12,
+        "month": "Dic"
+      }
+    ]
+  }
+]
+

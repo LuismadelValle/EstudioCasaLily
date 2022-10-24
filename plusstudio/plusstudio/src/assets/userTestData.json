@@ -1,0 +1,14 @@
+[
+  {
+    "key": 1,
+    "userName": "Admin",
+    "role": "Administrator",
+    "loginStatus": "Not Logged"
+  },
+  {
+    "key": 2,
+    "userName": "user",
+    "role": "None",
+    "loginStatus": "Not Logged"
+  }
+]
