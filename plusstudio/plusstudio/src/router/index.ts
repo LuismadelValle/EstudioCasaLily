@@ -4,6 +4,7 @@ import customerHomeView from '@/views/customerHomeView.vue'
 import catalog from '@/views/catalog.vue'
 import service from '@/views/service.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
+import reserves from '@/views/reserve.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,11 @@ const routes: Array<RouteConfig> = [
     path: '/services',
     name: 'services',
     component: () => import('@/views/service.vue')
+  },
+  {
+    path: '/reserves',
+    name: 'reserves',
+    component: () => import('@/views/reserve.vue')
   },
   {
     path: '*',
