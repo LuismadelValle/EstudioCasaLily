@@ -14,7 +14,7 @@
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
               <b-nav-item href="/catalog">Catálogo</b-nav-item>
-              <b-nav-item href="#">Servicios</b-nav-item>
+              <b-nav-item href="/services">Servicios</b-nav-item>
               <b-nav-item href="#">Reservar</b-nav-item>
             </b-navbar-nav>
 
