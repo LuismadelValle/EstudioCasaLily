@@ -86,7 +86,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import timeData from "@/assets/timeData.json";
 import cards from "@/assets/cards.json";
 
