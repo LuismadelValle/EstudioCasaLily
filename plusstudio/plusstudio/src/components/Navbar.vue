@@ -1,5 +1,5 @@
 <template>
-  <div class="fluid w-100">
+  <div class="container w-100">
     <b-row>
       <b-navbar toggleable="lg">
         <b-col class="col-sm">
@@ -25,7 +25,7 @@
                 <template #button-content>
                   <em>Mi Sesión</em>
                 </template>
-                <b-dropdown-item href="#">Autenticarme</b-dropdown-item>
+                <b-dropdown-item href="/login" rel="noopener noreferrer">Autenticarme</b-dropdown-item>
                 <b-dropdown-item href="#">Registrarme</b-dropdown-item>
               </b-nav-item-dropdown>
             </b-navbar-nav>

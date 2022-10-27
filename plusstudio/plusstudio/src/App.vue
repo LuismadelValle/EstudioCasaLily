@@ -12,8 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #4D4D58;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   display: flex;
   flex-direction: column;
   min-height: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container w-100">
     <b-row>
       <b-col cols-sm="2" class="ml-2 my-2">
         <b-button v-b-modal.modal-center>Filtrar por: </b-button>
@@ -53,7 +53,7 @@
         </b-row>
       </b-modal>
     </b-container>
-    <b-row>
+    <b-row class="my-3">
       <b-col sm="3" id="catalogCard" v-for="card in cards" :key="cards.id" :per-page="perPage" :current-page="paginationDetail">
         <b-card
           img-src="https://picsum.photos/600/300/?image=25"
@@ -114,7 +114,8 @@ export default {
     rows() {
       return this.cards.length
     }
-  }, methods: {
+  },
+  methods: {
     resetData() {
       this.selectYear = null
       this.selectMonth = null

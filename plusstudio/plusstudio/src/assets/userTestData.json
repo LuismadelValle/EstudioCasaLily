@@ -1,13 +1,15 @@
 [
   {
     "key": 1,
-    "userName": "Admin",
+    "userName": "admin@testing.com",
+    "password": "Admin@123",
     "role": "Administrator",
     "loginStatus": "Not Logged"
   },
   {
     "key": 2,
-    "userName": "user",
+    "userName": "user@testing.com",
+    "password": "User@123",
     "role": "None",
     "loginStatus": "Not Logged"
   }
