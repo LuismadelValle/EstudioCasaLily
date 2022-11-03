@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import customerHomeView from '@/views/customerHomeView.vue'
 import Login from '@/views/login.vue'
+import Register from '@/views/register.vue'
+import NewPassword from '@/views/forgotPassword.vue'
 import Catalog from '@/views/catalog.vue'
 import Service from '@/views/service.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
@@ -19,6 +21,16 @@ const routes: Array<RouteConfig> = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
+  },
+  {
+    path: '/forgotPassword',
+    name: 'forgotPassword',
+    component: NewPassword
   },
   {
     path: '/catalog',

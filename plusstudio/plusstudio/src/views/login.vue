@@ -2,7 +2,7 @@
   <div>
     <Navbar />
     <div class="container w-50">
-      <form @submit="validateInputs">
+      <form @submit="validateUser">
         <h2 class="mb-3">Autenticarme</h2>
         <div class="input my-2">
           <label for="email">Correo electrónico</label>
@@ -13,10 +13,10 @@
           <input class="form-control" type="password" name="password" placeholder="password123" v-model="password" required />
         </div>
         <div class="alternative-option mt-4">
-          ¿No tienes una cuenta? <span>Registrarse</span><br>
-          <span>Olvidé mi contraseña</span>
+          ¿No tienes una cuenta? <a href="/register">Registrarse</a><br>
+          <a href="/forgotPassword">Olvidé mi contraseña</a>
         </div>
-        <b-button type="submit" class="mt-4 my-5 btn-secondary" id="login_button" @click="validateUser">
+        <b-button type="submit" class="mt-4 my-5 btn-secondary" id="login_button" @click="validateUser($event)">
           Autenticarme
         </b-button>
         <b-alert :show="errors" variant="danger">{{ alertText }}</b-alert>
@@ -41,6 +41,8 @@ export default {
     return {
       email: "",
       password: "",
+      retries: 0,
+      maxRetries: 3,
       users: Users,
       alertText: "",
       errors: false
@@ -70,26 +72,40 @@ export default {
         return 
       }
     },
-    validateUser() {
-      var admin = this.users[0].userName
-      var adminPass = this.users[0].password
-            
-      if (this.email === admin && this.password === adminPass) {
-        this.users[0].loginStatus = 'Log in'
-        // redirect to main page and send username for text
-      } else if (this.users.length > 1) {
-        for (let n = 1; n < this.users.length; n++){
-          if (this.email === this.users[n].userName && this.password === this.users[n].password) {
-            this.users[0].loginStatus = 'Log in'
-            // redirect to main page and send username for text
-          } else {
-            this.errors = true
-            this.alertText = 'Usuario no encontrado, cree una cuenta para continuar'
-          }
+    validateUser(event: { preventDefault: () => void; }) {
+      // for (let m = 0; m < this.users.length; m++) {
+      //   if(this.users[n].disabled = true){
+          // prevent next block of code from executing, investigate how
+        // }
+      // }
+
+      for (let n = 0; n < this.users.length; n++) {
+        if (this.email === this.users[n].userEmail && this.password === this.users[n].password) {
+          this.users[0].loginStatus = 'Log in'
+          this.$router.push('/')
+        } else if (this.email === this.users[n].userEmail && this.password !== this.users[n].password) {
+          event.preventDefault()
+          this.errors = true
+          this.alertText = 'Contraseña incorrecta'
+          this.retries++
+          this.users[n].disabled = true
+        } else if (this.email !== this.users[n].userEmail && this.password === this.users[n].password) {
+          event.preventDefault()
+          this.errors = true
+          this.alertText = 'Combinación usuario-contraseña invalida'
+          this.retries++
+          this.users[n].disabled = true
+        } else {
+          event.preventDefault()
+          this.errors = true
+          this.alertText = 'Usuario no encontrado, cree una cuenta para continuar'
         }
-      } else {
+      }
+
+      if (this.retries >= this.maxRetries) {
         this.errors = true
-        this.alertText = 'Usuario no encontrado, cree una cuenta para continuar'
+        this.alertText = 'Este usuario ha sido desactivado, genere una nueva contraseña para activarlo'
+        // send to generate new password
       }
     }
   }

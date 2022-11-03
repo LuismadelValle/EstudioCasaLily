@@ -1,14 +1,10 @@
 <template>
   <div>
     <Navbar />
-    <b-row>
-      <h3>Reservar una cita</h3>
-      <Calendar />
-    </b-row>
+    <h3>Reservar una cita</h3>
+    <Calendar />
     <p id="sideNotesForReserve">(*)Algunos servicios pueden ocupar todo el día</p>    
-    <b-row>
-      <Payment />
-    </b-row>
+    <Payment />
     <Footer />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container w-100">
     <Navbar /> 
     <div id="welcomeMsg" v-if="!loggedIn">
       <h3>Bienvenido a Plustudio</h3>

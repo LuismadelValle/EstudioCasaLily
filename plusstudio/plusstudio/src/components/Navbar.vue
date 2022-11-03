@@ -26,7 +26,9 @@
                   <em>Mi Sesión</em>
                 </template>
                 <b-dropdown-item href="/login" rel="noopener noreferrer">Autenticarme</b-dropdown-item>
-                <b-dropdown-item href="#">Registrarme</b-dropdown-item>
+                <!-- next dropdown display only if logged in -->
+                <b-dropdown-item href="#" disabled>Mi usuario</b-dropdown-item>
+                <b-dropdown-item href="#">Salir</b-dropdown-item>
               </b-nav-item-dropdown>
             </b-navbar-nav>
           </b-collapse>

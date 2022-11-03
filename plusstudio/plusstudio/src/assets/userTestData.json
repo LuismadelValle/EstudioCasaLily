@@ -1,16 +1,22 @@
 [
   {
     "key": 1,
-    "userName": "admin@testing.com",
+    "userName": "Admin",
+    "userLastName": "Admin",
+    "userEmail": "admin@testing.com",
     "password": "Admin@123",
     "role": "Administrator",
-    "loginStatus": "Not Logged"
+    "loginStatus": "Not Logged",
+    "disabled": false
   },
   {
     "key": 2,
-    "userName": "user@testing.com",
+    "userName": "User",
+    "userLastName": "Testing",
+    "userEmail": "user@testing.com",
     "password": "User@123",
     "role": "None",
-    "loginStatus": "Not Logged"
+    "loginStatus": "Not Logged",
+    "disabled": false
   }
 ]

@@ -13,6 +13,7 @@
     "bootstrap-icons": "^1.9.1",
     "bootstrap-vue": "^2.22.0",
     "core-js": "^3.8.3",
+    "emoji-regex": "^10.2.1",
     "popper": "^1.0.1",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1"

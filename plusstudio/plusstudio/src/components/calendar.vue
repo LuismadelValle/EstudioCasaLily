@@ -1,5 +1,5 @@
 <template>
-  <b-row class="w-100">
+  <b-row>
     <b-col cols="sm-3" md="auto">
       <b-calendar v-model="value" @context="onContext" locale="es-CU" selected-variant="primary" today-variant="info">
       </b-calendar>
