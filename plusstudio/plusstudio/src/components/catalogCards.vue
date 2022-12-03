@@ -67,7 +67,7 @@
             {{ card.cardTitle }}
           </b-card-title>
           <b-card-text>
-            <i>Categoría del servicio:</i> {{ card.serviceType }}<br>
+            <i>Tipo de servicio:</i> {{ card.serviceType }}<br>
             <i>Fecha:</i> {{ card.fullDate }}
           </b-card-text>
         </b-card>

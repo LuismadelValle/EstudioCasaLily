@@ -4,6 +4,7 @@ import customerHomeView from '@/views/customerHomeView.vue'
 import Login from '@/views/login.vue'
 import Register from '@/views/register.vue'
 import NewPassword from '@/views/forgotPassword.vue'
+import UserNoAdmin from '@/views/userNoAdmin.vue'
 import Catalog from '@/views/catalog.vue'
 import Service from '@/views/service.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
@@ -40,6 +41,11 @@ const routes: Array<RouteConfig> = [
   //   // which is lazy-loaded when the route is visited.
     // component: () => import(/* webpackChunkName: "about" */ '@/views/catalog.vue')
     component: Catalog
+  },
+  {
+    path: '/mySession',
+    name: 'UserSession',
+    component: UserNoAdmin
   },
   {
     path: '/services',

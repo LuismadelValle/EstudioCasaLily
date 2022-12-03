@@ -3,8 +3,8 @@
     <Navbar />
     <ServTable />
     <p id="notesForPrice">(*) Para la edición la cantidad de imagenes determina el precio de estas, solo se muestra un precio de referencia promedio.<br> 
-    El precio depende de la calidad de la imagen y del tiempo disponible para hacer la edición en base a la reserva que se haga
-    <br>(**)Consultar el sitio oficial del <a id="BCC" href="https://www.bc.gob.cu/">Banco de Cuba</a> para conocer el cambio oficial.</p>
+    El precio depende de la calidad de la imagen y del tiempo disponible para hacer la edición en base a la reserva que se haga.<br>Los precios base son en USD.
+    <br>(**)Consultar el sitio oficial del <a id="BCC" href="https://www.bc.gob.cu/" target="_blank" rel="noopener noreferrer">Banco de Cuba</a> para conocer el cambio oficial.</p>
     <Discounts />
     <Footer />
   </div>

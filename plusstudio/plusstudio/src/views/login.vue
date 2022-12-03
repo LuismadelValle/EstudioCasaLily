@@ -22,6 +22,7 @@
         <b-alert :show="errors" variant="danger">{{ alertText }}</b-alert>
       </form>
     </div>
+    <RegisterLoginWith usageText='Autenticarse usando: ' />
     <Footer />
   </div>
 </template>
@@ -29,18 +30,21 @@
 <script lang="ts">
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
+import RegisterLoginWith from '@/components/registerLoginWith.vue';
 import Users from '@/assets/userTestData.json';
+
 import $ from "jquery";
 
 export default {
   components: {
     Navbar,
+    RegisterLoginWith,
     Footer
   },
   data() {
     return {
       email: "",
-      password: "",
+      password: '',
       retries: 0,
       maxRetries: 3,
       users: Users,
@@ -81,8 +85,12 @@ export default {
 
       for (let n = 0; n < this.users.length; n++) {
         if (this.email === this.users[n].userEmail && this.password === this.users[n].password) {
-          this.users[0].loginStatus = 'Log in'
-          this.$router.push('/')
+          this.users[n].loginStatus = 'Log in'
+          if (this.users[n].role === "Administrator") {
+            this.$router.push('/admin')
+          } else {
+            this.$router.push('/')
+          }
         } else if (this.email === this.users[n].userEmail && this.password !== this.users[n].password) {
           event.preventDefault()
           this.errors = true

@@ -15,34 +15,23 @@
           <b-form-input id="UserEmail" type="email" placeholder="Ingrese su correo"  required v-model="form.email"></b-form-input>
         </b-input-group>
 
-        <label class="sr-only" for="UserPassword">Contraseña</label>
-        <b-form-input id="UserPassword" type="password" placeholder="Ingrese una contraseña" class="mb-2 mr-sm-2 mb-sm-0" v-model="form.password" required>
-        </b-form-input>
+        <b-form-group description="Incluya mayúsculas, números y caracteres especiales"> 
+          <label class="sr-only" for="UserPassword">Contraseña</label>
+          <b-form-input id="UserPassword" type="password" placeholder="Ingrese una contraseña" class="mb-2 mr-sm-2 mb-sm-0" v-model="form.password" required>
+            {{ passwordStrength }}
+          </b-form-input>
+          <b-progress id="progressBar" height="7px" :value="value" :variant="variant" ></b-progress>
+        </b-form-group>
 
         <label class="sr-only" for="confirmPassword">Confirmar contraseña</label>
         <b-form-input id="confirmPassword" type="password" placeholder="Introduzca nuevamente la contraseña" class="mb-2 mr-sm-2 mb-sm-0" v-model="form.confirmPassword" required>
         </b-form-input>
                 
-        <b-button id="newAccount" type="submit" variant="primary" @click="validateUserName($event); validateUserLastname($event); validatePassword($event)">Crear cuenta</b-button>
+        <b-button id="newAccount" type="submit" variant="primary" @click="validateUserName($event); validateUserLastname($event); validatePassword($event); passwordLengthCheck($event); samePasswords($event)">Crear cuenta</b-button>
         <b-button id="resetData" type="reset" variant="danger">Resetear</b-button>
       </b-form>
 
-      <p>Crear cuenta usando: </p>
-      <a href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google"
-          viewBox="0 0 16 16">
-          <path
-            d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z" />
-        </svg>
-      </a>
-      <a href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook"
-          viewBox="0 0 16 16">
-          <path
-            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-        </svg>
-      </a>
-
+      <RegisterLoginWith usageText='Crear cuenta usando: ' />
     </div>
     <Footer />
   </div>
@@ -51,11 +40,14 @@
 <script lang="ts">
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
+import RegisterLoginWith from '@/components/registerLoginWith.vue';
 import Users from '@/assets/userTestData.json';
+
 
 export default {
   components: {
     Navbar,
+    RegisterLoginWith,
     Footer
   },
   data() {
@@ -68,13 +60,97 @@ export default {
         lastname: ''
       },
       show: true,
-      users: Users
+      users: Users,
+      value: 0,
+      variant: ''
+    }
+  },
+  computed: {
+    passwordStrength() {
+      var numbRegex = /\d/gm
+      var specCharRegex = /\W/gm
+      var upperCaseRegex = /[A-Z]/gm
+
+      if (this.value <= 25) {
+        this.variant = 'danger'
+      } else if (this.value > 25 && this.value <= 50) {
+        this.variant = 'warning'
+      } else if (this.value > 50 && this.value <= 75) {
+        this.variant = 'info'
+      } else if (this.value > 75) {
+        this.variant = 'success'
+      }
+
+      if (this.form.password.length == 0) {
+        this.value = 0
+        this.variant = ''
+      } else if (this.form.password.length > 0 && this.form.password.length <= 4) {
+        this.value = (this.form.password.length * 100) / 16
+      } else if (this.form.password.length > 4 && this.form.password.length <= 8) {
+        if (numbRegex.test(this.form.password) == false) {
+          this.value = ((this.form.password.length * 100) / 16) - 5
+        } else if (numbRegex.test(this.form.password) == false && specCharRegex.test(this.form.password) == false) {
+          this.value = ((this.form.password.length * 100) / 16) - 10
+        } else if (numbRegex.test(this.form.password) == false && specCharRegex.test(this.form.password) == false && upperCaseRegex.test(this.form.password) == false) {
+          this.value = ((this.form.password.length * 100) / 16) - 15
+        } else {
+          this.value = ((this.form.password.length * 100) / 16)
+        }
+      } else if (this.form.password.length > 8 && this.form.password.length <= 12) {
+        if (numbRegex.test(this.form.password) == false) {
+          this.value = ((this.form.password.length * 100) / 16) - 5
+        } else if (numbRegex.test(this.form.password) == false && specCharRegex.test(this.form.password) == false) {
+          this.value = ((this.form.password.length * 100) / 16) - 10
+        } else if (numbRegex.test(this.form.password) == false && specCharRegex.test(this.form.password) == false && upperCaseRegex.test(this.form.password) == false) {
+          this.value = ((this.form.password.length * 100) / 16) - 15
+        } else {
+          this.value = ((this.form.password.length * 100) / 16)
+        }
+      } else if (this.form.password.length > 12 && this.form.password.length <= 16) {
+        if (numbRegex.test(this.form.password) == false) {
+          this.value = ((this.form.password.length * 100) / 16) - 5
+        } else if (numbRegex.test(this.form.password) == false && specCharRegex.test(this.form.password) == false) {
+          this.value = ((this.form.password.length * 100) / 16) - 10
+        } else if (numbRegex.test(this.form.password) == false && specCharRegex.test(this.form.password) == false && upperCaseRegex.test(this.form.password) == false) {
+          this.value = ((this.form.password.length * 100) / 16) - 15
+        } else {
+          this.value = ((this.form.password.length * 100) / 16)
+        }
+      } else {
+        this.variant = 'danger'
+        alert('Solo 16 caracteres máximo en la contraseña')
+      }
     }
   },
   methods: {
     onSubmit(event: { preventDefault: () => void; }) {
+      var userLength = this.users.length
+      let newKey = userLength + 1
+
       event.preventDefault()
-      console.log('submit user')
+      this.users.push({
+        key: newKey,
+        userName: this.form.name,
+        userLastName: this.form.lastname,
+        userEmail: this.form.email,
+        password: this.form.password,
+        role: 'None',
+        loginStatus: 'Not Active',
+        disabled: false
+      })
+
+      this.form.email = ''
+      this.form.name = ''
+      this.form.lastname = ''
+      this.form.password = ''
+      this.form.confirmPassword = ''
+      // Trick to reset/clear native browser form validation state
+      this.show = false
+      this.$nextTick(() => {
+        this.show = true
+      })
+
+      alert('Se le envio un correo para activar el usuario')
     },
     onReset(event: { preventDefault: () => void; }) {
       event.preventDefault()
@@ -120,37 +196,53 @@ export default {
       }
     },
     validatePassword(event: { preventDefault: () => void; }) {
-      var passRegex = /\s?/gm
+      var passRegex = /\s/gm
+      var passStrength = /^(?=.*[A - Z])(?=.*[!@#$*])(?=.*[0 - 9])(?=.*[a - z]).{4,16}$/gm
 
-      if (passRegex.test(this.form.password) == false || passRegex.test(this.form.confirmPassword) == false) {
+      if (passRegex.test(this.form.password) == true) {
         event.preventDefault()
-        alert('Contraseña invalida')
+        alert('Contraseña invalida, no debe tener espacios')
+        this.form.password = ''
+        this.form.confirmPassword = ''
+      } else if (passRegex.test(this.form.password) == true) {
+        event.preventDefault()
+        alert('Contraseña invalida, debe contener números, caracteres especiales y mayúsculas')
         this.form.password = ''
         this.form.confirmPassword = ''
       }
-
+    }, 
+    passwordLengthCheck(event: { preventDefault: () => void; }) {
+      if (this.form.password.length < 4) {
+        event.preventDefault()
+        alert('Contraseña invalida, no debe tener menos de 4 caracteres')
+        this.form.password = ''
+        this.form.confirmPassword = ''
+      } else if (this.form.password.length > 16) {
+        event.preventDefault()
+        alert('Contraseña invalida, no debe exceder de 16 caracteres')
+        this.form.password = ''
+        this.form.confirmPassword = ''
+      } 
+    },
+    samePasswords(event: { preventDefault: () => void; }) {
       if (this.form.password !== this.form.confirmPassword) {
         event.preventDefault()
         alert('Deben coincidir las contraseñas')
         this.form.password = ''
         this.form.confirmPassword = ''
       }
-    },
-    passwordStrength() {
-      var passStrength = /^(?=.*[A - Z])(?=.*[!@#$*])(?=.*[0 - 9])(?=.*[a - z]).{4,16}$/gm
-
-      if (passStrength.test(this.form.password) == true) {
-        return
-      }
     }
   }
 }
 </script>
 
-<style scoped>
-  h2{
+<style>
+h2{
     margin-left: 5px;
     text-align: left !important;
+  }
+  #__BVID__25__BV_description_ {
+    color: white !important;
   }
   #registerForm{
     width: 25% !important;
@@ -160,9 +252,11 @@ export default {
   #newAccount, #resetData {
     margin-top: 10px;
     margin-bottom: 15px !important;
-    margin-left: 5px;  
+    margin-right: auto;
+    margin-left: auto;  
   }
-  #UserName, #UserLastName, #UserEmail, #UserPassword, #confirmPassword {
-    margin-bottom: 5px !important;
+  #UserName, #UserLastName, #UserEmail, #UserPassword, #confirmPassword, .input-group-text {
+    margin-top: 5px !important;
+    border-radius: 2px !important;
   }
 </style>
