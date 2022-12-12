@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { BootstrapVue, IconsPlugin, LayoutPlugin, ModalPlugin, CardPlugin, VBScrollspyPlugin, DropdownPlugin, TablePlugin } from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin, LayoutPlugin, ModalPlugin, CardPlugin, VBScrollspyPlugin, DropdownPlugin, TablePlugin, SidebarPlugin } from 'bootstrap-vue'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -17,6 +17,7 @@ Vue.use(CardPlugin)
 Vue.use(VBScrollspyPlugin)
 Vue.use(DropdownPlugin)
 Vue.use(TablePlugin)
+Vue.use(SidebarPlugin)
 
 new Vue({
   router,

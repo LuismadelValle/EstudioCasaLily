@@ -9,6 +9,7 @@ import Catalog from '@/views/catalog.vue'
 import Service from '@/views/service.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 import Reserves from '@/views/reserve.vue'
+import AdminPages from '@/views/adminPage.vue'
 
 Vue.use(VueRouter)
 
@@ -56,6 +57,11 @@ const routes: Array<RouteConfig> = [
     path: '/reserves',
     name: 'reserves',
     component: Reserves
+  },
+  {
+    path: '/administration',
+    name: 'admin',
+    component: AdminPages
   },
   {
     path: '*',
