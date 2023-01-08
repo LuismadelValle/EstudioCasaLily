@@ -1,24 +1,33 @@
 <template>
   <div>
     <AdminNavbar />
-    <AdminSideBar />
+    <div v-if="services">
+      <ServicesTable v-on:openServices="openServiceTable($event)" />
+    </div>
     <Footer />
   </div>
 </template>
 
 <script lang="ts">
 import AdminNavbar from '@/components/adminNavbar.vue';
-import AdminSideBar from '@/components/adminSideBar.vue';
+import ServicesTable from '@/components/servicesChangesFromAdmin.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {
   components: {
     AdminNavbar,
-    AdminSideBar,
+    ServicesTable,
     Footer
   },
   data() {
-    return
+    return {
+      services: false
+    }
+  },
+  methods: {
+    openServiceTable(value: boolean) {
+      this.services = value
+    }
   }
 }
 </script>
